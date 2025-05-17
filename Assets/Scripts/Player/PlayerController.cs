@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,11 +9,21 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float moveX;
     private Animator anim;
+    private bool isAttacking = false;
+    private PlayerLife playerLife;
+    private bool isTakingDamage = false;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public int score = 0;
+    public TMP_Text scoreText;
+
 
     // VARIAVEIS PUBLICAS       
     public float speed;
     public int addJumps;
     public bool isGrounded;
+    public float damageCooldown = 1f;
     public float jumpForce;
 
 
@@ -21,12 +32,14 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         moveX = Input.GetAxisRaw("Horizontal");
+        playerLife = GetComponent<PlayerLife>();
+        UpdateScoreUI();
     }
 
     void Update()
-    {
-        
+    {   
         moveX = Input.GetAxis("Horizontal");
+        Attack();
 
         if (isGrounded)
         {
@@ -45,12 +58,18 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Attack();
         Move();
     }
 
     void Move()
     {
+        if (isAttacking)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            anim.SetBool("isRunning", false);
+            return;
+        }
+
         rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y);
         if (moveX > 0)
         {
@@ -76,10 +95,32 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (!isAttacking && Input.GetButtonDown("Fire1"))
         {
+            Debug.Log("Tentando atacar...");
             anim.SetTrigger("Attack");
+            StartCoroutine(AttackRoutine());
+
+            // Detecta inimigos no raio de ataque
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+            Debug.Log("Inimigos detectados: " + hitEnemies.Length);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("Tentando chamar Die em: " + enemy.name);
+                enemy.SendMessage("Die", SendMessageOptions.DontRequireReceiver);
+                score++;
+                UpdateScoreUI();
+            }
         }
+    }
+
+    IEnumerator AttackRoutine()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(0.6f);
+        isAttacking = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -90,6 +131,11 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             addJumps = 1;
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TryTakeDamage();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -98,6 +144,45 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TryTakeDamage();
+        }
+    }
+
+    void TryTakeDamage()
+    {
+        if (!isTakingDamage && !isAttacking)
+        {
+            playerLife.LoseLife();
+            StartCoroutine(DamageCooldown());
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    void UpdateScoreUI()
+    {
+        if (scoreText != null)
+            scoreText.text = score.ToString();
+    }
+
+    IEnumerator DamageCooldown()
+    {
+        isTakingDamage = true;
+        yield return new WaitForSeconds(damageCooldown);
+        isTakingDamage = false;
     }
 }       
 
