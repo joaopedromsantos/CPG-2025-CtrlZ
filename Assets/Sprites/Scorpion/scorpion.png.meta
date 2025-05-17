@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: 5dbf19514e7d38f4487091e15a83ba8a
+guid: eefdee08c9ece4a73aa65b3d11b756a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 827538889749247048
-    second: attack_0
+      213: -2530001987011866503
+    second: scorpion_0
   - first:
-      213: -5010287565412364656
-    second: attack_1
+      213: 6268282017268120247
+    second: scorpion_1
   - first:
-      213: -5463148037355797382
-    second: attack_2
+      213: 6979375138105619948
+    second: scorpion_2
   - first:
-      213: -5182820943178688908
-    second: attack_3
-  - first:
-      213: 7402079830906333199
-    second: attack_4
-  - first:
-      213: 1372099006290288469
-    second: attack_5
-  - first:
-      213: -5569035362507985257
-    second: attack_6
+      213: -5907750238387283674
+    second: scorpion_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,19 +106,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -144,155 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack_0
+      name: scorpion_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 4
-        width: 38
-        height: 39
+        x: 0
+        y: 10
+        width: 74
+        height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 0, z: 0, w: 14}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970102be890a3ecd0800000000000000
+      internalID: -2530001987011866503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scorpion_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 11
+        width: 71
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84433595c320c7b00800000000000000
-      internalID: 827538889749247048
+      spriteID: 7ba3c3fa8496df650800000000000000
+      internalID: 6268282017268120247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_1
+      name: scorpion_2
       rect:
         serializedVersion: 2
-        x: 74
-        y: 4
-        width: 38
-        height: 37
+        x: 196
+        y: 11
+        width: 64
+        height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09e0a014102e77ab0800000000000000
-      internalID: -5010287565412364656
+      spriteID: ce57af4b5b8bbd060800000000000000
+      internalID: 6979375138105619948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_2
+      name: scorpion_3
       rect:
         serializedVersion: 2
-        x: 138
-        y: 4
-        width: 41
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a7409061ecffe24b0800000000000000
-      internalID: -5463148037355797382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack_3
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 4
-        width: 45
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 476116bdfcbe218b0800000000000000
-      internalID: -5182820943178688908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack_4
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 4
-        width: 36
+        x: 286
+        y: 11
+        width: 60
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f086148636879b660800000000000000
-      internalID: 7402079830906333199
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack_5
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 4
-        width: 44
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 55f599ac6ccaa0310800000000000000
-      internalID: 1372099006290288469
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack_6
-      rect:
-        serializedVersion: 2
-        x: 394
-        y: 4
-        width: 45
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 79e6f1408dfc6b2b0800000000000000
-      internalID: -5569035362507985257
+      spriteID: 62952337574730ea0800000000000000
+      internalID: -5907750238387283674
       vertices: []
       indices: 
       edges: []
@@ -301,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 54bb67a171c624fc6881d411da9c0acb
     internalID: 0
     vertices: []
     indices: 
@@ -311,13 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      attack_0: 827538889749247048
-      attack_1: -5010287565412364656
-      attack_2: -5463148037355797382
-      attack_3: -5182820943178688908
-      attack_4: 7402079830906333199
-      attack_5: 1372099006290288469
-      attack_6: -5569035362507985257
+      scorpion_0: -2530001987011866503
+      scorpion_1: 6268282017268120247
+      scorpion_2: 6979375138105619948
+      scorpion_3: -5907750238387283674
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
