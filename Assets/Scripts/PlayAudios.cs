@@ -5,7 +5,7 @@ public class PlayWalkAudio : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioClips;
 
-    private void PlayAudio()
+    private void PlayWalkingAudio()
     {
         audioSource.PlayOneShot(
             audioClips[Random.Range(0, audioClips.Length)]
