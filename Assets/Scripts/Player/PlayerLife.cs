@@ -19,7 +19,7 @@ public class PlayerLife : MonoBehaviour
         HealhtLogic();
     }
 
-    void HealhtLogic()
+    public void HealhtLogic()
     {
         if (lives > maxLives)
         {

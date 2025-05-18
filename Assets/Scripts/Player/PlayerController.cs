@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayers;
     public int score = 0;
     public TMP_Text scoreText;
+    public bool lastJumpWasDouble = false;
 
 
     // VARIAVEIS PUBLICAS       
@@ -91,6 +92,11 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isJumping", true);    
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        if (!isGrounded)
+            lastJumpWasDouble = true;
+    else
+        lastJumpWasDouble = false;
     }
 
     void Attack()
