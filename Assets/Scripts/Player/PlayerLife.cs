@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerLife : MonoBehaviour
     public int maxLives = 7;
     public int lives;
 
+    [SerializeField] private string menuName;
     public Image[] heart;
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -60,7 +62,7 @@ public class PlayerLife : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("Game Over!");
+        SceneManager.LoadScene(menuName);
     }
 
 
