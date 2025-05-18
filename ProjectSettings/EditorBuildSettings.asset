@@ -12,11 +12,23 @@ EditorBuildSettings:
     path: Assets/Scenes/History_1.unity
     guid: c004f960926e2fc4088133681ed54da8
   - enabled: 1
+    path: Assets/Scenes/History_2.unity
+    guid: bd17b9247f9ebd440af43d7789e50d31
+  - enabled: 1
+    path: Assets/Scenes/History_3.unity
+    guid: ae250e77485b8784cbb961674b7c0ad8
+  - enabled: 1
+    path: Assets/Scenes/History_4.unity
+    guid: 2563b9b0ab92e3d45aafd4af569360f0
+  - enabled: 1
     path: Assets/Scenes/Game_Over.unity
     guid: ee8c03dcaaa7d6742a6663f3b34f8f59
   - enabled: 1
     path: Assets/Scenes/Desert.unity
     guid: 135c2b716289c1246a925062edc2703a
+  - enabled: 1
+    path: Assets/Scenes/Beach.unity
+    guid: 8eaa28ffd0f87ce448793aa640a19c9c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

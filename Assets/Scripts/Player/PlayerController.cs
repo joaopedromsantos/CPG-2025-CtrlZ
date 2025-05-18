@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
     public TMP_Text scoreText;
     public bool lastJumpWasDouble = false;
+    public Collider2D playerCollider;
 
 
     // VARIAVEIS PUBLICAS       
@@ -35,6 +36,18 @@ public class PlayerController : MonoBehaviour
         moveX = Input.GetAxisRaw("Horizontal");
         playerLife = GetComponent<PlayerLife>();
         UpdateScoreUI();
+
+        Collider2D playerCollider = GetComponent<Collider2D>();
+        GameObject[] limites = GameObject.FindGameObjectsWithTag("Inversora");
+        foreach (GameObject limite in limites)
+        {
+            Collider2D limiteCollider = limite.GetComponent<Collider2D>();
+            if (limiteCollider != null)
+            {
+                Physics2D.IgnoreCollision(playerCollider, limiteCollider);
+            }
+        }
+
     }
 
     void Update()
