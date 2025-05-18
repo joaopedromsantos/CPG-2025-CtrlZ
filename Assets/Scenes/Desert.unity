@@ -2446,6 +2446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLives: 5
   lives: 5
+  menuName: Game_Over
   heart:
   - {fileID: 1199228847}
   - {fileID: 491218671}
@@ -2475,6 +2476,7 @@ MonoBehaviour:
     m_Bits: 8
   score: 0
   scoreText: {fileID: 1103651042}
+  lastJumpWasDouble: 0
   speed: 4
   addJumps: 0
   isGrounded: 0
