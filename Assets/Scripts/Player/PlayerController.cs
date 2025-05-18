@@ -15,9 +15,10 @@ public class PlayerController : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int score = 0;
+    public static int score = 0;
     public TMP_Text scoreText;
     public bool lastJumpWasDouble = false;
+    public Collider2D playerCollider;
     public bool isJumping = false;
 
 
@@ -36,6 +37,18 @@ public class PlayerController : MonoBehaviour
         moveX = Input.GetAxisRaw("Horizontal");
         playerLife = GetComponent<PlayerLife>();
         UpdateScoreUI();
+
+        Collider2D playerCollider = GetComponent<Collider2D>();
+        GameObject[] limites = GameObject.FindGameObjectsWithTag("Inversora");
+        foreach (GameObject limite in limites)
+        {
+            Collider2D limiteCollider = limite.GetComponent<Collider2D>();
+            if (limiteCollider != null)
+            {
+                Physics2D.IgnoreCollision(playerCollider, limiteCollider);
+            }
+        }
+
     }
 
     void Update()
@@ -137,7 +150,7 @@ public class PlayerController : MonoBehaviour
             addJumps = 1;
         }
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Animais"))
         {
             TryTakeDamage();
         }
@@ -153,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Animais"))
         {
             TryTakeDamage();
         }

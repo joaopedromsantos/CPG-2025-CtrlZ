@@ -19,22 +19,25 @@ public class DoubleJumpAttack : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Animais"))
         {
-            Debug.Log("Caiu em cima do inimigo!");
             if (rb.linearVelocity.y < 0 && playerController.lastJumpWasDouble)
             {
-                Debug.Log("Ataque em area!");
                 playerController.lastJumpWasDouble = false;
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRange, enemyLayers);
                 foreach (Collider2D enemy in hitEnemies)
                 {
-                    Debug.Log("Inimigo atingido!");
                     enemy.SendMessage("Die", SendMessageOptions.DontRequireReceiver);
-                    playerController.score++;
+                    
                     playerLife.lives++;
                     playerLife.HealhtLogic();
-                    playerController.UpdateScoreUI();
+
+                    if (collision.gameObject.CompareTag("Enemy"))
+                    {
+                        PlayerController.score++;
+                        playerController.UpdateScoreUI();
+                    }
+                    
                 }
             }
         }

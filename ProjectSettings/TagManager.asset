@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Enemy
   - Water
+  - Undefined
+  - Inversora
+  - Bandeira
+  - Animais
   layers:
   - Default
   - TransparentFX
