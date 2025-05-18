@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public TMP_Text scoreText;
     public bool lastJumpWasDouble = false;
     public Collider2D playerCollider;
+    public bool isJumping = false;
 
 
     // VARIAVEIS PUBLICAS       
@@ -68,6 +69,8 @@ public class PlayerController : MonoBehaviour
             Jump();
             addJumps--;
         }
+
+        isJumping = anim.GetBool("isJumping");
     }
 
     void FixedUpdate()
