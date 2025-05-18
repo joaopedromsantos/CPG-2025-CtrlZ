@@ -7,9 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - Water
-  - Limite
+  - Undefined
   - Inversora
-  - Bandeira
   layers:
   - Default
   - TransparentFX
