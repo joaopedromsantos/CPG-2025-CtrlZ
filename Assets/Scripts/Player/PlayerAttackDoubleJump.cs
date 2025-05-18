@@ -6,6 +6,7 @@ public class DoubleJumpAttack : MonoBehaviour
     public LayerMask enemyLayers;   // Defina igual ao do PlayerController
 
     private PlayerController playerController;
+    private PlayerLife playerLife;
     private Rigidbody2D rb;
     private bool lastJumpWasDouble = false;
 
@@ -13,6 +14,7 @@ public class DoubleJumpAttack : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
+        playerLife = GetComponent<PlayerLife>();
     }
 
     void Update()
@@ -38,14 +40,20 @@ public class DoubleJumpAttack : MonoBehaviour
         // Se cair em cima do inimigo ap�s double jump
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (rb.linearVelocity.y < 0 && lastJumpWasDouble)
+            Debug.Log("Caiu em cima do inimigo!");
+            if (rb.linearVelocity.y < 0 && playerController.lastJumpWasDouble)
             {
                 // Ataque em �rea
+                Debug.Log("Ataque em �rea!");
+                playerController.lastJumpWasDouble = false; // Reseta após o ataque
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRange, enemyLayers);
                 foreach (Collider2D enemy in hitEnemies)
                 {
+                    Debug.Log("Inimigo atingido!");
                     enemy.SendMessage("Die", SendMessageOptions.DontRequireReceiver);
                     playerController.score++;
+                    playerLife.lives++;
+                    playerLife.HealhtLogic();
                     playerController.UpdateScoreUI();
                 }
                 lastJumpWasDouble = false; // Evita m�ltiplos ataques
