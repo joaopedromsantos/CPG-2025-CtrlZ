@@ -9,6 +9,8 @@ TagManager:
   - Water
   - Undefined
   - Inversora
+  - Bandeira
+  - Animais
   layers:
   - Default
   - TransparentFX

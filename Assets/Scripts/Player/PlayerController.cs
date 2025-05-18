@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int score = 0;
+    public static int score = 0;
     public TMP_Text scoreText;
     public bool lastJumpWasDouble = false;
     public Collider2D playerCollider;
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
             addJumps = 1;
         }
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Animais"))
         {
             TryTakeDamage();
         }
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Animais"))
         {
             TryTakeDamage();
         }
