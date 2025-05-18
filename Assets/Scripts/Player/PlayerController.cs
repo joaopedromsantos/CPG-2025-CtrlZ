@@ -97,18 +97,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttacking && Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Tentando atacar...");
             anim.SetTrigger("Attack");
             StartCoroutine(AttackRoutine());
 
-            // Detecta inimigos no raio de ataque
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-            Debug.Log("Inimigos detectados: " + hitEnemies.Length);
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                Debug.Log("Tentando chamar Die em: " + enemy.name);
                 enemy.SendMessage("Die", SendMessageOptions.DontRequireReceiver);
                 score++;
                 UpdateScoreUI();
@@ -172,7 +168,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    void UpdateScoreUI()
+    public void UpdateScoreUI()
     {
         if (scoreText != null)
             scoreText.text = score.ToString();
